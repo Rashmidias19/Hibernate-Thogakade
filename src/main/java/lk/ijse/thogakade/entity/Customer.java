@@ -1,4 +1,4 @@
-package entity;
+package lk.ijse.thogakade.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 

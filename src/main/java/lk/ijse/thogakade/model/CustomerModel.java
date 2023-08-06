@@ -6,7 +6,7 @@
 //*/
 //
 //import lk.ijse.thogakade.db.DBConnection;
-//import entity.Customer;
+//import lk.ijse.thogakade.entity.Customer;
 //import lk.ijse.thogakade.util.CrudUtil;
 //
 //import java.sql.Connection;

@@ -1,6 +1,6 @@
-package repository;
+package lk.ijse.thogakade.repository;
 
-import entity.Customer;
+import lk.ijse.thogakade.entity.Customer;
 import lk.ijse.thogakade.config.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
