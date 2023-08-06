@@ -20,7 +20,7 @@
 //import javafx.scene.control.cell.PropertyValueFactory;
 //import javafx.scene.layout.AnchorPane;
 //import javafx.stage.Stage;
-//import lk.ijse.thogakade.dto.Item;
+//import lk.ijse.thogakade.entity.Item;
 //import lk.ijse.thogakade.dto.tm.ItemTM;
 //import lk.ijse.thogakade.model.ItemModel;
 //

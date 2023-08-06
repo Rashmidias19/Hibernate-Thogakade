@@ -7,7 +7,7 @@ package lk.ijse.thogakade.model;
 
 import lk.ijse.thogakade.db.DBConnection;
 import lk.ijse.thogakade.dto.CartDTO;
-import lk.ijse.thogakade.dto.Item;
+import lk.ijse.thogakade.entity.Item;
 import lk.ijse.thogakade.util.CrudUtil;
 
 import java.sql.*;

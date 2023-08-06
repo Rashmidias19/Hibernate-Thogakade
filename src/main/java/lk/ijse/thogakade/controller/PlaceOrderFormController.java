@@ -21,7 +21,7 @@
 //import javafx.stage.Stage;
 //import lk.ijse.thogakade.dto.CartDTO;
 //import lk.ijse.thogakade.entity.Customer;
-//import lk.ijse.thogakade.dto.Item;
+//import lk.ijse.thogakade.entity.Item;
 //import lk.ijse.thogakade.dto.tm.CartTM;
 //
 //import lk.ijse.thogakade.model.ItemModel;

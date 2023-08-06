@@ -38,6 +38,9 @@ public class CustomerFormController implements Initializable {
         props.setProperty("user", "root");
         props.setProperty("password", "1234");
     }
+//
+//    Customer customer=getCustomer();
+//    CustomerRepository customerRepository=new CustomerRepository();
 
     public TableView<CustomerTM> tblCustomer;
 
@@ -141,7 +144,7 @@ public class CustomerFormController implements Initializable {
         Customer customer=getCustomer();
         CustomerRepository customerRepository=new CustomerRepository();
 
-        int savedCusId=customerRepository.saveCustomer(customer);
+         int savedCusId=customerRepository.saveCustomer(customer);
         System.out.println("Saved customer id:" + savedCusId);
     }
 
@@ -158,14 +161,39 @@ public class CustomerFormController implements Initializable {
     }
 
     public void btnDeleteOnAction(ActionEvent event) {
-        Customer customer=getCustomer();
+         int customerId= Integer.parseInt(txtId.getText());
         CustomerRepository customerRepository=new CustomerRepository();
+        Customer existingCustomer=customerRepository.getCustomer(customerId);
 
-
+        boolean isDeleted=customerRepository.deleteCustomer(existingCustomer);
+        if(isDeleted){
+            System.out.println("Customer Deleted");
+        }else{
+            System.out.println("not deleted");
+        }
 
     }
 
     public void btnUpdateOnAction(ActionEvent event) {
+        CustomerRepository customerRepository=new CustomerRepository();
+        Customer customer=findCustomer();
+        boolean isUpdated=customerRepository.updateCustomer(customer);
+
+        if(isUpdated){
+            System.out.println("Customer updated");
+        }else{
+            System.out.println("not updated");
+        }
+    }
+
+    private Customer findCustomer() {
+        Customer customer=new Customer();
+        customer.setId(Integer.parseInt(txtId.getText()));
+        customer.setName(txtName.getText());
+        customer.setAddress(txtAddress.getText());
+        customer.setSalary(Double.valueOf(txtSalary.getText()));
+
+        return customer;
     }
 
     public void btnClearOnAction(ActionEvent event) {
