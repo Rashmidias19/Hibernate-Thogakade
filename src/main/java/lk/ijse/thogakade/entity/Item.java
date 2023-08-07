@@ -13,7 +13,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_code")
-    private String code;
+    private int code;
 
     @Column(name = "description")
     private String description;
@@ -38,11 +38,11 @@ public class Item {
     public Item() {
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

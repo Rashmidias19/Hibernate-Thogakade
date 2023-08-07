@@ -14,7 +14,7 @@ public class ItemRepository {
         session= SessionFactoryConfig.getInstance().getSession();
     }
 
-    public int saveCustomer(Item item){
+    public int saveItem(Item item){
         Transaction transaction=session.beginTransaction();
 
         try{
