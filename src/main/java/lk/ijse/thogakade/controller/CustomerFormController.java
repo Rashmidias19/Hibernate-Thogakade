@@ -1,10 +1,5 @@
 package lk.ijse.thogakade.controller;
 
-/*
-    @author DanujaV
-    @created 3/14/23 - 9:37 AM   
-*/
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

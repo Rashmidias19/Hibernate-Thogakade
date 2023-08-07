@@ -1,9 +1,5 @@
 package lk.ijse.thogakade.util;
 
-/*
-    @author DanujaV
-    @created 3/30/23 - 11:19 AM   
-*/
 
 import lk.ijse.thogakade.db.DBConnection;
 

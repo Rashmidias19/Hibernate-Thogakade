@@ -6,9 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "item")
-public class Item {
-
+@Table(name = "items")
+public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +27,14 @@ public class Item {
     @CreationTimestamp
     private Timestamp createdDateTime;
 
-    public Item(String code, String description, Double unitPrice, Integer qtyOnHand) {
+    public Items(int code, String description, Double unitPrice, Integer qtyOnHand) {
         this.code = code;
         this.description = description;
         this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
     }
 
-    public Item() {
+    public Items() {
     }
 
     public int getCode() {

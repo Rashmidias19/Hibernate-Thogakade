@@ -1,76 +1,76 @@
 package lk.ijse.thogakade.repository;
 
 import lk.ijse.thogakade.config.SessionFactoryConfig;
-import lk.ijse.thogakade.entity.Customer;
-import lk.ijse.thogakade.entity.Item;
+
+import lk.ijse.thogakade.entity.Items;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ItemRepository {
 
-    private final Session session;
+    private final Session sessionItem;
 
     public ItemRepository(){
-        session= SessionFactoryConfig.getInstance().getSession();
+        sessionItem= SessionFactoryConfig.getInstance().getSession();
     }
 
-    public int saveItem(Item item){
-        Transaction transaction=session.beginTransaction();
+    public int saveItem(Items items){
+        Transaction transactionItem=sessionItem.beginTransaction();
 
         try{
 
-            int itemId= (int) session.save(item);
-            transaction.commit();
-            session.close();
+            int itemId= (int) sessionItem.save(items);
+            transactionItem.commit();
+            sessionItem.close();
 
             return itemId;
 
         }catch (Exception e){
-            transaction.rollback();
-            session.close();
+            transactionItem.rollback();
+            sessionItem.close();
             e.printStackTrace();
             return -1;
         }
 
     }
 
-    public Item getItem(int id){
+    public Items getItem(int id){
 
         try{
-            return session.get(Item.class,1);
+            return sessionItem.get(Items.class,1);
         }catch (Exception e){
             e.printStackTrace();
             throw e;
         }
     }
 
-    public boolean  updateItem(Item item){
-        Transaction transaction = session.beginTransaction();
+    public boolean  updateItem(Items items){
+        Transaction transactionItem = sessionItem.beginTransaction();
         try {
 
-            session.update(item);
-            transaction.commit();
-            session.close();
+            sessionItem.update(items);
+            transactionItem.commit();
+            sessionItem.close();
             return true;
         }catch (Exception e){
-            transaction.rollback();
-            session.close();
+            transactionItem.rollback();
+            sessionItem.close();
             e.printStackTrace();
             return false;
         }
     }
 
-    public boolean deleteItem(Item item){
-        Transaction transaction= session.beginTransaction();
+    public boolean deleteItem(Items items){
+        Transaction transactionItem= sessionItem.beginTransaction();
 
         try{
-            session.delete(item);
-            transaction.commit();
-            session.close();
+            sessionItem.delete(items);
+            transactionItem.commit();
+            sessionItem.close();
             return true;
         }catch (Exception e){
-            transaction.rollback();
-            session.close();
+            transactionItem.rollback();
+            sessionItem.close();
             e.printStackTrace();
             return false;
         }

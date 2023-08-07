@@ -5,31 +5,21 @@ package lk.ijse.thogakade.controller;
     @created 3/14/23 - 9:44 AM
 */
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.thogakade.entity.Customer;
-import lk.ijse.thogakade.entity.Item;
-import lk.ijse.thogakade.dto.tm.ItemTM;
-import lk.ijse.thogakade.model.ItemModel;
-import lk.ijse.thogakade.repository.CustomerRepository;
+import lk.ijse.thogakade.entity.Items;
+
 import lk.ijse.thogakade.repository.ItemRepository;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -69,7 +59,6 @@ public class ItemFormController implements Initializable {
     @FXML
     private TextField txtUnitPrice;
 
-    public TableView<ItemTM> tblItem;
 
     @Override
     public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
@@ -116,15 +105,16 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-//        String code = txtCode.getText();
-//        try {
-//            boolean isDeleted = ItemModel.delete(code);
-//            if (isDeleted) {
-//                new Alert(Alert.AlertType.CONFIRMATION, "deleted!").show();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, "something went wrong!").show();
-//        }
+        int itemId= Integer.parseInt(txtCode.getText());
+        ItemRepository itemRepository=new ItemRepository();
+        Items existingItems =itemRepository.getItem(itemId);
+
+        boolean isDeleted=itemRepository.deleteItem(existingItems);
+        if(isDeleted){
+            System.out.println("Item Deleted");
+        }else{
+            System.out.println("not deleted");
+        }
     }
 
     @FXML
@@ -134,27 +124,27 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        Item item=getItem();
+        Items items =getItem();
         ItemRepository itemRepository=new ItemRepository();
 
-        int savedItemId=itemRepository.saveItem(item);
+        int savedItemId=itemRepository.saveItem(items);
         System.out.println("Saved item id:" + savedItemId);
     }
 
-    private Item getItem() {
-        Item item=new Item();
-        item.setDescription(txtDescription.getText());
-        item.setUnitPrice(Double.valueOf(txtUnitPrice.getText()));
-        item.setQtyOnHand(Integer.valueOf(txtQtyOnHand.getText()));
-        return item;
+    private Items getItem() {
+        Items items =new Items();
+        items.setDescription(txtDescription.getText());
+        items.setUnitPrice(Double.valueOf(txtUnitPrice.getText()));
+        items.setQtyOnHand(Integer.valueOf(txtQtyOnHand.getText()));
+        return items;
     }
 
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         ItemRepository itemRepository=new ItemRepository();
-        Item item=findItem();
-        boolean isUpdated=itemRepository.updateItem(item);
+        Items items =findItem();
+        boolean isUpdated=itemRepository.updateItem(items);
 
         if(isUpdated){
             System.out.println("Item updated");
@@ -163,11 +153,14 @@ public class ItemFormController implements Initializable {
         }
     }
 
-    private Item findItem() {
-        Item item=new Item();
-        item.setCode(txtCode.getText());
+    private Items findItem() {
+        Items items =new Items();
+        items.setCode(Integer.parseInt(txtCode.getText()));
+        items.setDescription(txtDescription.getText());
+        items.setUnitPrice(Double.valueOf(txtUnitPrice.getText()));
+        items.setQtyOnHand(Integer.valueOf(txtQtyOnHand.getText()));
 
-        return customer;
+        return items;
     }
 
     @FXML
