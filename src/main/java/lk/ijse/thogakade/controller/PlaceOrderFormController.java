@@ -32,6 +32,8 @@ import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
@@ -166,6 +168,7 @@ public class PlaceOrderFormController implements Initializable {
        cart.setQty(Integer.valueOf(txtQty.getText()));
        cart.setTotal(Double.valueOf(lblTotal.getText()));
        cart.setUnitPrice(Double.valueOf(lblPrice.getText()));
+       cart.setCreatedDateTime(Timestamp.valueOf(LocalDateTime.now()));
 
         return cart;
     }
