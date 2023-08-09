@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.thogakade.entity.Customer;
-import lk.ijse.thogakade.dto.tm.CustomerTM;
 import lk.ijse.thogakade.repository.CustomerRepository;
 //import lk.ijse.thogakade.entity.Customer;
 //import lk.ijse.thogakade.dto.tm.CustomerTM;
@@ -37,7 +36,6 @@ public class CustomerFormController implements Initializable {
 //    Customer customer=getCustomer();
 //    CustomerRepository customerRepository=new CustomerRepository();
 
-    public TableView<CustomerTM> tblCustomer;
 
     @FXML
     private TableColumn<?, ?> colAction;
