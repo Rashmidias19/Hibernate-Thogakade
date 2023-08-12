@@ -20,6 +20,8 @@ import lk.ijse.thogakade.entity.Items;
 import lk.ijse.thogakade.repository.ItemRepository;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -159,7 +161,7 @@ public class ItemFormController implements Initializable {
         items.setDescription(txtDescription.getText());
         items.setUnitPrice(Double.valueOf(txtUnitPrice.getText()));
         items.setQtyOnHand(Integer.valueOf(txtQtyOnHand.getText()));
-
+        items.setCreatedDateTime(Timestamp.valueOf(LocalDateTime.now()));
         return items;
     }
 

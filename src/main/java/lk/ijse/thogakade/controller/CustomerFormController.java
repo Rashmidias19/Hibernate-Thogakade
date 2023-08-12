@@ -21,6 +21,7 @@ import lk.ijse.thogakade.repository.CustomerRepository;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -185,7 +186,7 @@ public class CustomerFormController implements Initializable {
         customer.setName(txtName.getText());
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.valueOf(txtSalary.getText()));
-
+        customer.setCreatedDateTime(Timestamp.valueOf(LocalDateTime.now()));
         return customer;
     }
 

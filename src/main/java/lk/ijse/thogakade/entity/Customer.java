@@ -29,12 +29,20 @@ public class Customer {
     @CreationTimestamp
     private Timestamp createdDateTime;
 
+    public Timestamp getCreatedDateTime() {
+        return createdDateTime;
+    }
 
-    public Customer(int id, String name, String address, Double salary) {
+    public void setCreatedDateTime(Timestamp createdDateTime) {
+        this.createdDateTime = createdDateTime;
+    }
+
+    public Customer(int id, String name, String address, Double salary,Timestamp createdDateTime) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
+        this.createdDateTime = createdDateTime;
     }
 
     public Customer() {

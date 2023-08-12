@@ -27,11 +27,21 @@ public class Items {
     @CreationTimestamp
     private Timestamp createdDateTime;
 
-    public Items(int code, String description, Double unitPrice, Integer qtyOnHand) {
+    public Timestamp getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public void setCreatedDateTime(Timestamp createdDateTime) {
+        this.createdDateTime = createdDateTime;
+    }
+
+
+    public Items(int code, String description, Double unitPrice, Integer qtyOnHand,Timestamp createdDateTime) {
         this.code = code;
         this.description = description;
         this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
+        this.createdDateTime = createdDateTime;
     }
 
     public Items() {

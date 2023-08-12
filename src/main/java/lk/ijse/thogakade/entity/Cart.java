@@ -30,8 +30,8 @@ public class Cart{
     @Column(name = "total")
     private Double total;
 
-//    @ManyToOne
-//    private Customer customer;
+    @ManyToOne
+    private Customer customer;
 
     @CreationTimestamp
     private Timestamp createdDateTime;
