@@ -4,6 +4,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -26,6 +28,7 @@ public class Customer {
 
     @CreationTimestamp
     private Timestamp createdDateTime;
+
 
     public Customer(int id, String name, String address, Double salary) {
         this.id = id;

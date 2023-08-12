@@ -14,8 +14,6 @@ public class Cart{
     @Column(name = "order_code")
     private int code;
 
-    @Column(name = "customer_id")
-    private int customer_id;
 
     @Column(name = "item_id")
     private int itemId;
@@ -32,22 +30,34 @@ public class Cart{
     @Column(name = "total")
     private Double total;
 
+//    @ManyToOne
+//    private Customer customer;
+
     @CreationTimestamp
     private Timestamp createdDateTime;
 
-    public Cart(int code,int customer_id, int itemId, Integer qty, Double unitPrice, String description, Double total, Timestamp createdDateTime) {
+
+    public Cart(int code, int customer_id, int itemId, Integer qty, Double unitPrice, String description, Double total, Timestamp createdDateTime,Customer customer) {
         this.code = code;
-        this.customer_id = customer_id;
         this.itemId = itemId;
         this.qty = qty;
         this.unitPrice = unitPrice;
         this.description = description;
         this.total = total;
         this.createdDateTime = createdDateTime;
-
+        this.customer = customer;
     }
 
     public Cart() {
+    }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getCode() {
@@ -56,14 +66,6 @@ public class Cart{
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
     }
 
     public int getItemId() {
@@ -118,10 +120,12 @@ public class Cart{
     public String toString() {
         return "Cart{" +
                 "code=" + code +
+                ", itemId=" + itemId +
                 ", qty=" + qty +
                 ", unitPrice=" + unitPrice +
                 ", description='" + description + '\'' +
                 ", total=" + total +
+                ", customer=" + customer +
                 ", createdDateTime=" + createdDateTime +
                 '}';
     }

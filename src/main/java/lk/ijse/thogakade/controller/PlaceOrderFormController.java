@@ -114,7 +114,9 @@ public class PlaceOrderFormController implements Initializable {
 
     private Cart getCart() {
         Cart cart=new Cart();
-        cart.setCustomer_id(Integer.parseInt(txtCustId.getText()));
+        CustomerRepository customerRepository=new CustomerRepository();
+        Customer customer=customerRepository.getCustomer(Integer.parseInt(txtCustId.getText()));
+        cart.setCustomer(customer);
         cart.setItemId(Integer.parseInt(txtItemId.getText()));
         cart.setDescription(txtDescription.getText());
         cart.setQty(Integer.valueOf(txtQty.getText()));
@@ -161,8 +163,9 @@ public class PlaceOrderFormController implements Initializable {
 
     private Cart findCart() {
         Cart cart=new Cart();
-       cart.setCode(Integer.parseInt(txtOrderID.getText()));
-       cart.setCustomer_id(Integer.parseInt(txtCustId.getText()));
+       cart.setCode(Integer.parseInt(txtOrderID.getText()));  CustomerRepository customerRepository=new CustomerRepository();
+        Customer customer=customerRepository.getCustomer(Integer.parseInt(txtCustId.getText()));
+        cart.setCustomer(customer);
        cart.setItemId(Integer.parseInt(txtItemId.getText()));
        cart.setDescription(txtDescription.getText());
        cart.setQty(Integer.valueOf(txtQty.getText()));
